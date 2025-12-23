@@ -1,6 +1,7 @@
-import React from 'react';
+'use client';
+
 import { Github, Twitter, Linkedin, Waypoints, ArrowRight, CheckCircle2, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export const Footer: React.FC = () => {
   return (
@@ -14,7 +15,7 @@ export const Footer: React.FC = () => {
           
           {/* Brand & Newsletter Column */}
           <div className="lg:col-span-4 flex flex-col items-start gap-8">
-            <Link to="/" className="flex items-center gap-2.5 group transition-transform hover:scale-[1.02]">
+            <Link href="/" className="flex items-center gap-2.5 group transition-transform hover:scale-[1.02]">
               <div className="p-2 bg-brand-500 rounded-xl text-white shadow-lg shadow-brand-500/20">
                 <Waypoints size={22} strokeWidth={2.5} />
               </div>

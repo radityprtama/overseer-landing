@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { ChevronDown, Plus, Minus, MessageSquare } from 'lucide-react';
 
 interface FAQItem {

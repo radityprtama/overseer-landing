@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+'use client';
+
+import { useState, useEffect } from 'react';
 import { Waypoints, ArrowRight, Rocket } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHome = location.pathname === '/';
+  const router = useRouter();
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,9 +38,9 @@ export const Navbar: React.FC = () => {
   const handleNavClick = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
     setIsOpen(false);
-    
+
     if (!isHome) {
-      navigate('/');
+      router.push('/');
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
@@ -63,8 +66,8 @@ export const Navbar: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           {/* Logo */}
-          <Link 
-            to="/" 
+          <Link
+            href="/"
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-2 group relative z-[101]"
           >
@@ -90,11 +93,11 @@ export const Navbar: React.FC = () => {
               </a>
             ))}
             <Link
-               to="/pricing"
-               className={`text-sm font-medium hover:text-brand-600 transition-colors relative group ${location.pathname === '/pricing' ? 'text-brand-600' : 'text-slate-600'}`}
+               href="/pricing"
+               className={`text-sm font-medium hover:text-brand-600 transition-colors relative group ${pathname === '/pricing' ? 'text-brand-600' : 'text-slate-600'}`}
             >
                Pricing
-               <span className={`absolute -bottom-1 left-0 h-0.5 bg-brand-500 transition-all duration-300 ${location.pathname === '/pricing' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+               <span className={`absolute -bottom-1 left-0 h-0.5 bg-brand-500 transition-all duration-300 ${pathname === '/pricing' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </Link>
           </div>
 
@@ -152,7 +155,7 @@ export const Navbar: React.FC = () => {
               </a>
             ))}
             <Link
-              to="/pricing"
+              href="/pricing"
               onClick={() => setIsOpen(false)}
               className={`text-3xl font-display font-bold text-ink-900 flex items-center justify-between group transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 isOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { Copy, Check, Terminal } from 'lucide-react';
 
 type Language = 'typescript' | 'python' | 'curl';

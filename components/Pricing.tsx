@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { Check, HelpCircle, ChevronDown, ChevronUp, Sparkles, Building2, Zap } from 'lucide-react';
 
 export const Pricing: React.FC = () => {

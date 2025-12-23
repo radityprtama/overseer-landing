@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { UseCase } from '../types';
 import { CheckCircle2, Shield, PieChart, Code2, Lock, Activity, DollarSign, Key, Globe, Layout, ChevronRight } from 'lucide-react';
 

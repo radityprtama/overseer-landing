@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useMemo } from "react";
+'use client';
+
+import { useState, useEffect, useMemo } from "react";
 import {
   ArrowRight,
   Terminal,
