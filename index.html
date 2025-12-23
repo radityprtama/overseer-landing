@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overseer - One API. Any Model.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#fff7ed',
+                100: '#ffedd5',
+                200: '#fed7aa',
+                300: '#fdba74',
+                400: '#fb923c',
+                500: '#f97316', // Primary Orange
+                600: '#ea580c', // Deep Orange
+                700: '#c2410c',
+                900: '#7c2d12',
+                950: '#431407',
+              },
+              ink: {
+                DEFAULT: '#0B0F1A',
+                900: '#0B0F1A',
+                800: '#1E293B',
+              },
+              surface: {
+                DEFAULT: '#FFFFFF',
+                subtle: '#F8FAFC',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+              tight: ['Inter Tight', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'fade-in-right': 'fadeInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'marquee': 'marquee 40s linear infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'blob': 'blob 7s infinite',
+              'shimmer': 'shimmer 3s linear infinite',
+              'draw': 'draw 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'blink': 'blink 0.8s step-end infinite',
+              'sweep': 'sweep 3s ease-in-out infinite',
+              'grow-bar': 'growBar 2s ease-in-out infinite',
+              'scan': 'scan 3s linear infinite',
+              'slide-right': 'slideRight 2s linear infinite',
+              'redact': 'redact 2s step-end infinite',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeInRight: {
+                '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+              shimmer: {
+                '0%': { 'background-position': '-200% 0' },
+                '100%': { 'background-position': '200% 0' },
+              },
+              draw: {
+                'from': { 'stroke-dashoffset': '1000' },
+                'to': { 'stroke-dashoffset': '0' }
+              },
+              blink: {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '0' },
+              },
+              sweep: {
+                '0%': { transform: 'translateX(-100%)' },
+                '50%': { transform: 'translateX(200%)' },
+                '100%': { transform: 'translateX(200%)' },
+              },
+              growBar: {
+                '0%, 100%': { transform: 'scaleY(0.5)' },
+                '50%': { transform: 'scaleY(1)' },
+              },
+              scan: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(100%)' },
+              },
+              slideRight: {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(100%)' },
+              },
+              redact: {
+                '0%, 45%': { backgroundColor: 'transparent', color: 'inherit' },
+                '50%, 95%': { backgroundColor: '#cbd5e1', color: 'transparent' },
+              }
+            },
+            backgroundImage: {
+              'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm1 1h38v38H1V1z' fill='%23e2e8f0' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+              'shimmer-gradient': 'linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.1), transparent)',
+              'sweep-gradient': 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .glass-dark {
+        background: rgba(11, 15, 26, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .animate-fade-in-up, 
+        .animate-fade-in-right,
+        .animate-draw, 
+        .animate-pulse-slow, 
+        .animate-shimmer,
+        .animate-blink, 
+        .animate-sweep,
+        .animate-blob,
+        .animate-grow-bar,
+        .animate-scan,
+        .animate-slide-right,
+        .animate-redact {
+          animation: none !important;
+          transition: none !important;
+          opacity: 1 !important;
+          transform: none !important;
+        }
+        path, circle {
+          stroke-dashoffset: 0 !important;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-surface-subtle text-ink antialiased selection:bg-brand-500 selection:text-white">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

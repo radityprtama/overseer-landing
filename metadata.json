@@ -1,0 +1,5 @@
+{
+  "name": "Overseer",
+  "description": "The Control Plane for Enterprise AI. Manage costs, enforce governance, and gain visibility across all your AI providers.",
+  "requestFramePermissions": []
+}
